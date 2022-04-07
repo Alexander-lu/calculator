@@ -22,7 +22,7 @@ class Calculator implements ActionListener {
 
     // 计算器上的按键
     JButton b0, b1, b2,b3,b4,b5,b6,b7,b8,b9;
-    JButton btnAdd, btnEqual;
+    JButton btnAdd, btnEqual,btnSubtract;
 
     Calculator() {
         panel = new JPanel();
@@ -59,6 +59,7 @@ class Calculator implements ActionListener {
         panel.add(b8);
         panel.add(b9);
         panel.add(btnEqual);
+        panel.add(btnSubtract);
 
     }
 
@@ -78,6 +79,7 @@ class Calculator implements ActionListener {
         b8.addActionListener(this);
         b9.addActionListener(this);
         btnEqual.addActionListener(this);
+        btnSubtract.addActionListener(this);
     }
 
     /**
@@ -96,6 +98,7 @@ class Calculator implements ActionListener {
         b9 = new JButton("9");
         btnAdd = new JButton("+");
         btnEqual = new JButton("=");
+        btnSubtract = new JButton("-");
     }
 
     // main function
