@@ -151,8 +151,12 @@ class Calculator implements ActionListener {
         int result;
         if (operator.equals("+")) {
             result = addNumbers(operand1, operand2);
-        } else {
+        } else if (operator.equals("-")){
             result = SubtractNumbers(operand1, operand2);
+        } else  if (operator.equals("×")){
+            result = chenNumbers(operand1, operand2);
+        } else {
+            result = chuNumbers(operand1, operand2);
         }
         return result;
     }
@@ -162,6 +166,12 @@ class Calculator implements ActionListener {
     }
     int SubtractNumbers(int a, int b) {
         return a - b;
+    }
+    int chenNumbers(int a, int b) {
+        return a * b;
+    }
+    int chuNumbers(int a, int b) {
+        return a / b;
     }
 
     /**
