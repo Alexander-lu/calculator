@@ -103,7 +103,7 @@ class Calculator implements ActionListener {
         btnAdd = new JButton("+");
         btnEqual = new JButton("=");
         btnSubtract = new JButton("-");
-        btnchen = new JButton("×“);
+        btnchen = new JButton("×");
         btnchu = new JButton("÷");
     }
 
