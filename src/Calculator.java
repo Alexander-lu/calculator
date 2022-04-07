@@ -14,59 +14,51 @@ class Calculator implements ActionListener {
     Double operand1;
     // 保存用户输入的运算符号：+-×÷
     String operator;
-
     // 用来表示应该重新输入一个数字还是往屏幕后面添加数字
     boolean shouldAppendDigitToNumber;
-
     // 计算器上的按键
-    JButton b0, b1, b2, b3, b4, b5, b6, b7, b8, b9,b00;
-    JButton btnAdd, btnEqual, btnSubtract, btnchen, btnchu,btnC,btnpingfan,btnpingfangen;
-
-    Calculator() {
+    JButton b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b00,btnAdd,btnEqual,btnSubtract,btnchen,btnchu,btnC,btnpingfan,btnpingfangen;
+    // 生成整个计算器模板
+    Calculator(){
         panel = new JPanel();
+    //  设置背景颜色
         panel.setBackground(Color.BLUE);
-
+    //  初始化operator，为后面判断连续运算提供条件
         operator = null;
         displayText = "0";
-
         display = new JTextField(20);
         display.setEditable(false);
         display.setText(displayText);
-
         shouldAppendDigitToNumber = false;
-
         createButtons();
         attachListeners();
         addComponentsToPanel();
-    }
-
+                }
     /**
      * 将屏幕和按键依次添加到计算器上
      */
     void addComponentsToPanel() {
+        panel.add(btnC);
         panel.add(display);
-        panel.add(btnAdd);
+        panel.add(btnEqual);
         panel.add(b0);
-        panel.add(b00);
         panel.add(b1);
         panel.add(b2);
         panel.add(b3);
         panel.add(b4);
         panel.add(b5);
+        panel.add(b00);
         panel.add(b6);
         panel.add(b7);
         panel.add(b8);
         panel.add(b9);
-        panel.add(btnEqual);
+        panel.add(btnAdd);
         panel.add(btnSubtract);
         panel.add(btnchen);
         panel.add(btnchu);
-        panel.add(btnC);
         panel.add(btnpingfan);
         panel.add(btnpingfangen);
-
-    }
-
+                                }
     /**
      * 设置用户点击按键时计算器的反应
      */
@@ -90,8 +82,7 @@ class Calculator implements ActionListener {
         btnC.addActionListener(this);
         btnpingfan.addActionListener(this);
         btnpingfangen.addActionListener(this);
-    }
-
+                            }
     /**
      * 创建好按键（但还没有"贴"到屏幕上）
      */
@@ -115,18 +106,18 @@ class Calculator implements ActionListener {
         btnC = new JButton("C");
         btnpingfan = new JButton("平方");
         btnpingfangen = new JButton("求平方根");
-    }
-
+                        }
     // main function
     public static void main(String[] args) {
         Calculator calculator = new Calculator();
-
-        JFrame frame = new JFrame();
+        JFrame frame = new JFrame("Caculator");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(calculator.panel);
         frame.setSize(330, 220);
+        frame.setLocation(700,300);
         frame.setVisible(true);
-    }
+                                            }
+//    主要判断方法
     public void actionPerformed(ActionEvent e) {
         var command = e.getActionCommand();
         char c = command.charAt(0);
@@ -163,6 +154,7 @@ class Calculator implements ActionListener {
             operand1 = null;
             shouldAppendDigitToNumber = false;
         }
+//        判断是否连续运算
         else if (operator != null){
             displayText = Double.toString(computeResult());
             display.setText(displayText);
@@ -178,7 +170,6 @@ class Calculator implements ActionListener {
         }
         display.setText(displayText);
     }
-
     /**
      * 计算结果
      */
@@ -195,36 +186,35 @@ class Calculator implements ActionListener {
             result = chuNumbers(operand1, operand2);
         }
         return result;
-    }
+                            }
     Double computeResult1() {
         Double operand2 = Double.parseDouble(displayText);
         Double result;
         result = Math.pow(operand2, 2);
         return result;
-    }
+                            }
     Double computeResult2() {
         Double operand2 = Double.parseDouble(displayText);
         Double result;
         result = Math.sqrt(operand2);
         return result;
-    }
+                             }
     Double addNumbers(Double a, Double b) {
         return a + b;
-    }
+                                          }
     Double SubtractNumbers(Double a, Double b) {
         return a - b;
-    }
+                                                 }
     Double chenNumbers(Double a, Double b) {
         return a * b;
-    }
+                                             }
     Double chuNumbers(Double a, Double b) {
         return a / b;
-    }
-
+                                           }
     /**
      * 判断按的是数（0123之类）还是运算符（+-=之类）
      */
     boolean isOperand(char c) {
         return Character.isDigit(c);
-    }
+                                }
 }
