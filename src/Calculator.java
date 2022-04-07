@@ -12,7 +12,7 @@ class Calculator implements ActionListener {
     String displayText;
 
     // 保存用户输入的第一个数
-    Integer operand1;
+    double operand1;
 
     // 保存用户输入的运算符号：+-×÷
     String operator;
@@ -131,9 +131,9 @@ class Calculator implements ActionListener {
             }
         } else if (c == '=') {
             double result = computeResult();
-            displayText = Integer.toString(result);
+            displayText = Integer.toString((int) result);
             operator = null;
-            operand1 = null;
+            operand1 = 0;
             shouldAppendDigitToNumber = false;
         } else {
             operand1 = Integer.parseInt(displayText);
