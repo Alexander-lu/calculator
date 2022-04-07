@@ -12,7 +12,7 @@ class Calculator implements ActionListener {
     String displayText;
 
     // 保存用户输入的第一个数
-    Integer operand1;
+    Double operand1;
 
     // 保存用户输入的运算符号：+-×÷
     String operator;
@@ -130,13 +130,13 @@ class Calculator implements ActionListener {
                 shouldAppendDigitToNumber = true;
             }
         } else if (c == '=') {
-            int result = computeResult();
-            displayText = Integer.toString(result);
+            Double result = computeResult();
+            displayText = Double.toString(result);
             operator = null;
             operand1 = null;
             shouldAppendDigitToNumber = false;
         } else {
-            operand1 = Integer.parseInt(displayText);
+            operand1 = Double.parseDouble(displayText);
             shouldAppendDigitToNumber = false;
             operator = command;
         }
@@ -146,9 +146,9 @@ class Calculator implements ActionListener {
     /**
      * 计算结果
      */
-    int computeResult() {
-        double operand2 = Integer.parseInt(displayText);
-        double result;
+    Double computeResult() {
+        Double operand2 = Double.parseDouble(displayText);
+        Double result;
         if (operator.equals("+")) {
             result = addNumbers(operand1, operand2);
         } else if (operator.equals("-")){
@@ -158,19 +158,19 @@ class Calculator implements ActionListener {
         } else {
             result = chuNumbers(operand1, operand2);
         }
-        return (int) result;
+        return result;
     }
 
-    double addNumbers(double a, double b) {
+    Double addNumbers(Double a, Double b) {
         return a + b;
     }
-    double SubtractNumbers(double a, double b) {
+    Double SubtractNumbers(Double a, Double b) {
         return a - b;
     }
-    double chenNumbers(double a, double b) {
+    Double chenNumbers(Double a, Double b) {
         return a * b;
     }
-    double chuNumbers(double a, double b) {
+    Double chuNumbers(Double a, Double b) {
         return a / b;
     }
 
