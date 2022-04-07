@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 class Calculator implements ActionListener {
     // 整个面板
     JPanel panel;
-//ww?
     // 计算器的显示屏
     JTextField display;
     // 显示屏里的内容
@@ -120,7 +119,7 @@ class Calculator implements ActionListener {
     }
 
     int addNumbers(int a, int b) {
-        return a - b;
+        return a + b;
     }
 
     /**
