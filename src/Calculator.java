@@ -131,13 +131,19 @@ class Calculator implements ActionListener {
                 displayText = command;
                 shouldAppendDigitToNumber = true;
             }
-        } else if (c == '=') {
+        }
+
+        else if (c == '=') {
             Double result = computeResult();
             displayText = Double.toString(result);
             operator = null;
             operand1 = null;
             shouldAppendDigitToNumber = false;
-        } else {
+        }
+        else if (c == '.') {
+            displayText += command;
+            shouldAppendDigitToNumber = true;
+        }else {
             operand1 = Double.parseDouble(displayText);
             shouldAppendDigitToNumber = false;
             operator = command;
