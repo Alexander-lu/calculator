@@ -21,7 +21,7 @@ class Calculator implements ActionListener {
     boolean shouldAppendDigitToNumber;
 
     // 计算器上的按键
-    JButton b0, b1;
+    JButton b0, b1, b7;
     JButton btnAdd, btnEqual;
 
     Calculator() {
@@ -51,6 +51,7 @@ class Calculator implements ActionListener {
         panel.add(b1);
         panel.add(b0);
         panel.add(btnEqual);
+        panel.add(b7);
     }
 
     /**
@@ -60,6 +61,7 @@ class Calculator implements ActionListener {
         btnAdd.addActionListener(this);
         b1.addActionListener(this);
         b0.addActionListener(this);
+        b7.addActionListener(this);
         btnEqual.addActionListener(this);
     }
 
@@ -69,6 +71,7 @@ class Calculator implements ActionListener {
     void createButtons() {
         b0 = new JButton("0");
         b1 = new JButton("1");
+        b7 = new JButton("7");
         btnAdd = new JButton("+");
         btnEqual = new JButton("=");
     }
