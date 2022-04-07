@@ -130,8 +130,8 @@ class Calculator implements ActionListener {
                 shouldAppendDigitToNumber = true;
             }
         } else if (c == '=') {
-            int result = computeResult();
-            displayText = Integer.toString(result);
+            float result = computeResult();
+            displayText = Integer.toString((int) result);
             operator = null;
             operand1 = null;
             shouldAppendDigitToNumber = false;
@@ -146,9 +146,9 @@ class Calculator implements ActionListener {
     /**
      * 计算结果
      */
-    int computeResult() {
-        int operand2 = Integer.parseInt(displayText);
-        int result;
+    float computeResult() {
+        float operand2 = Integer.parseInt(displayText);
+        float result;
         if (operator.equals("+")) {
             result = addNumbers(operand1, operand2);
         } else if (operator.equals("-")){
@@ -161,16 +161,16 @@ class Calculator implements ActionListener {
         return result;
     }
 
-    int addNumbers(int a, int b) {
+    float addNumbers(float a, float b) {
         return a + b;
     }
-    int SubtractNumbers(int a, int b) {
+    float SubtractNumbers(float a, float b) {
         return a - b;
     }
-    int chenNumbers(int a, int b) {
+    float chenNumbers(float a, float b) {
         return a * b;
     }
-    int chuNumbers(int a, int b) {
+    float chuNumbers(float a, float b) {
         return a / b;
     }
 
