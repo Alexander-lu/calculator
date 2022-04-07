@@ -21,8 +21,8 @@ class Calculator implements ActionListener {
     boolean shouldAppendDigitToNumber;
 
     // 计算器上的按键
-    JButton b0, b1, b2, b3, b4, b5, b6, b7, b8, b9;
-    JButton btnAdd, btnEqual, btnSubtract, btnchen, btnchu,btndian;
+    JButton b0, b1, b2, b3, b4, b5, b6, b7, b8, b9,b00;
+    JButton btnAdd, btnEqual, btnSubtract, btnchen, btnchu,btndian, btnac;
 
     Calculator() {
         panel = new JPanel();
@@ -47,22 +47,24 @@ class Calculator implements ActionListener {
      */
     void addComponentsToPanel() {
         panel.add(display);
-        panel.add(btnAdd);
-        panel.add(b0);
+        panel.add(btnac);
+        panel.add(btnEqual);
         panel.add(b1);
         panel.add(b2);
         panel.add(b3);
         panel.add(b4);
         panel.add(b5);
+        panel.add(b0);
+        panel.add(b00);
         panel.add(b6);
         panel.add(b7);
         panel.add(b8);
         panel.add(b9);
-        panel.add(btnEqual);
+        panel.add(btndian);
+        panel.add(btnAdd);
         panel.add(btnSubtract);
         panel.add(btnchen);
         panel.add(btnchu);
-        panel.add(btndian);
     }
 
     /**
@@ -70,6 +72,7 @@ class Calculator implements ActionListener {
      */
     void attachListeners() {
         btnAdd.addActionListener(this);
+        b00.addActionListener(this);
         b1.addActionListener(this);
         b0.addActionListener(this);
         b2.addActionListener(this);
@@ -85,6 +88,7 @@ class Calculator implements ActionListener {
         btnchen.addActionListener(this);
         btnchu.addActionListener(this);
         btndian.addActionListener(this);
+        btnac.addActionListener(this);
     }
 
     /**
@@ -92,6 +96,7 @@ class Calculator implements ActionListener {
      */
     void createButtons() {
         b0 = new JButton("0");
+        b00 = new JButton("00");
         b1 = new JButton("1");
         b2 = new JButton("2");
         b3 = new JButton("3");
@@ -107,6 +112,7 @@ class Calculator implements ActionListener {
         btnchen = new JButton("×");
         btnchu = new JButton("÷");
         btndian = new JButton(".");
+        btnac = new JButton("A");
     }
 
     // main function
@@ -116,7 +122,7 @@ class Calculator implements ActionListener {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(calculator.panel);
-        frame.setSize(330, 220);
+        frame.setSize(350, 350);
         frame.setVisible(true);
     }
 
@@ -143,7 +149,12 @@ class Calculator implements ActionListener {
         else if (c == '.') {
             displayText += command;
             shouldAppendDigitToNumber = true;
-        }else {
+        }
+        else if (c == 'A') {
+            displayText = "0";
+            shouldAppendDigitToNumber = false;
+        }
+        else {
             operand1 = Double.parseDouble(displayText);
             shouldAppendDigitToNumber = false;
             operator = command;
