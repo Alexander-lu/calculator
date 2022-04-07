@@ -10,10 +10,8 @@ class Calculator implements ActionListener {
     JTextField display;
     // 显示屏里的内容
     String displayText;
-
     // 保存用户输入的第一个数
     Double operand1;
-
     // 保存用户输入的运算符号：+-×÷
     String operator;
 
@@ -22,7 +20,7 @@ class Calculator implements ActionListener {
 
     // 计算器上的按键
     JButton b0, b1, b2, b3, b4, b5, b6, b7, b8, b9,b00;
-    JButton btnAdd, btnEqual, btnSubtract, btnchen, btnchu,btndian, btnac;
+    JButton btnAdd, btnEqual, btnSubtract, btnchen, btnchu,btnC,btnpingfan,btnpingfangen;
 
     Calculator() {
         panel = new JPanel();
@@ -47,24 +45,26 @@ class Calculator implements ActionListener {
      */
     void addComponentsToPanel() {
         panel.add(display);
-        panel.add(btnac);
-        panel.add(btnEqual);
+        panel.add(btnAdd);
+        panel.add(b0);
+        panel.add(b00);
         panel.add(b1);
         panel.add(b2);
         panel.add(b3);
         panel.add(b4);
         panel.add(b5);
-        panel.add(b0);
-        panel.add(b00);
         panel.add(b6);
         panel.add(b7);
         panel.add(b8);
         panel.add(b9);
-        panel.add(btndian);
-        panel.add(btnAdd);
+        panel.add(btnEqual);
         panel.add(btnSubtract);
         panel.add(btnchen);
         panel.add(btnchu);
+        panel.add(btnC);
+        panel.add(btnpingfan);
+        panel.add(btnpingfangen);
+
     }
 
     /**
@@ -72,9 +72,9 @@ class Calculator implements ActionListener {
      */
     void attachListeners() {
         btnAdd.addActionListener(this);
-        b00.addActionListener(this);
         b1.addActionListener(this);
         b0.addActionListener(this);
+        b00.addActionListener(this);
         b2.addActionListener(this);
         b3.addActionListener(this);
         b4.addActionListener(this);
@@ -87,8 +87,9 @@ class Calculator implements ActionListener {
         btnSubtract.addActionListener(this);
         btnchen.addActionListener(this);
         btnchu.addActionListener(this);
-        btndian.addActionListener(this);
-        btnac.addActionListener(this);
+        btnC.addActionListener(this);
+        btnpingfan.addActionListener(this);
+        btnpingfangen.addActionListener(this);
     }
 
     /**
@@ -111,8 +112,9 @@ class Calculator implements ActionListener {
         btnSubtract = new JButton("-");
         btnchen = new JButton("×");
         btnchu = new JButton("÷");
-        btndian = new JButton(".");
-        btnac = new JButton("A");
+        btnC = new JButton("C");
+        btnpingfan = new JButton("平方");
+        btnpingfangen = new JButton("求平方根");
     }
 
     // main function
@@ -122,14 +124,12 @@ class Calculator implements ActionListener {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(calculator.panel);
-        frame.setSize(350, 350);
+        frame.setSize(330, 220);
         frame.setVisible(true);
     }
-
     public void actionPerformed(ActionEvent e) {
         var command = e.getActionCommand();
         char c = command.charAt(0);
-
         if (isOperand(c)) {
             if (shouldAppendDigitToNumber) {
                 displayText += command;
@@ -137,22 +137,39 @@ class Calculator implements ActionListener {
                 displayText = command;
                 shouldAppendDigitToNumber = true;
             }
-        }
-
-        else if (c == '=') {
+        } else if (c == '=') {
             Double result = computeResult();
             displayText = Double.toString(result);
             operator = null;
             operand1 = null;
             shouldAppendDigitToNumber = false;
-        }
-        else if (c == '.') {
-            displayText += command;
-            shouldAppendDigitToNumber = true;
-        }
-        else if (c == 'A') {
+        } else if (c == 'C'){
             displayText = "0";
+            operator=null;
+            operand1 = null;
             shouldAppendDigitToNumber = false;
+        }
+        else if (c == '平'){
+            Double result = computeResult1();
+            displayText = Double.toString(result);
+            operator = null;
+            operand1 = null;
+            shouldAppendDigitToNumber = false;
+        }
+        else if (c == '求'){
+            Double result = computeResult2();
+            displayText = Double.toString(result);
+            operator = null;
+            operand1 = null;
+            shouldAppendDigitToNumber = false;
+        }
+        else if (operator != null){
+            displayText = Double.toString(computeResult());
+            display.setText(displayText);
+            operand1 = Double.parseDouble(displayText);
+            shouldAppendDigitToNumber = false;
+            operator=String.valueOf(c);
+            return;
         }
         else {
             operand1 = Double.parseDouble(displayText);
@@ -179,7 +196,18 @@ class Calculator implements ActionListener {
         }
         return result;
     }
-
+    Double computeResult1() {
+        Double operand2 = Double.parseDouble(displayText);
+        Double result;
+        result = Math.pow(operand2, 2);
+        return result;
+    }
+    Double computeResult2() {
+        Double operand2 = Double.parseDouble(displayText);
+        Double result;
+        result = Math.sqrt(operand2);
+        return result;
+    }
     Double addNumbers(Double a, Double b) {
         return a + b;
     }
