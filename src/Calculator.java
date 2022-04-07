@@ -131,7 +131,7 @@ class Calculator implements ActionListener {
             }
         } else if (c == '=') {
             double result = computeResult();
-            displayText = Integer.toString((int) result);
+            displayText = Integer.toString(result);
             operator = null;
             operand1 = null;
             shouldAppendDigitToNumber = false;
