@@ -148,7 +148,12 @@ class Calculator implements ActionListener {
      */
     int computeResult() {
         int operand2 = Integer.parseInt(displayText);
-        int result = SubtractNumbers(operand1, operand2);
+        int result;
+        if (operator.equals("+")) {
+            result = addNumbers(operand1, operand2);
+        } else {
+            result = SubtractNumbers(operand1, operand2);
+        }
         return result;
     }
 
