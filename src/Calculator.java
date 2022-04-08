@@ -17,7 +17,7 @@ class Calculator implements ActionListener {
     // 用来表示应该重新输入一个数字还是往屏幕后面添加数字
     boolean shouldAppendDigitToNumber;
     // 计算器上的按键
-    JButton btnDian,btnLog,btnLn,btnSin,btnCos,btnTan,b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b00,btnAdd,btnEqual,btnSubtract,btnChen,btnChu,btnAc,btnPingFan,btnPingFanGen;
+    JButton btnPingFan3,btnDian,btnLog,btnLn,btnSin,btnCos,btnTan,b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b00,btnAdd,btnEqual,btnSubtract,btnChen,btnChu,btnAc,btnPingFan2,btnPingFanGen;
     // 生成整个计算器模板
     Calculator(){
         panel = new JPanel();
@@ -56,7 +56,8 @@ class Calculator implements ActionListener {
         panel.add(btnSubtract);
         panel.add(btnChen);
         panel.add(btnChu);
-        panel.add(btnPingFan);
+        panel.add(btnPingFan2);
+        panel.add(btnPingFan3);
         panel.add(btnPingFanGen);
         panel.add(btnSin);
         panel.add(btnCos);
@@ -86,7 +87,8 @@ class Calculator implements ActionListener {
         btnChen.addActionListener(this);
         btnChu.addActionListener(this);
         btnAc.addActionListener(this);
-        btnPingFan.addActionListener(this);
+        btnPingFan2.addActionListener(this);
+        btnPingFan3.addActionListener(this);
         btnPingFanGen.addActionListener(this);
         btnSin.addActionListener(this);
         btnCos.addActionListener(this);
@@ -110,20 +112,21 @@ class Calculator implements ActionListener {
         b7 = new JButton("7");
         b8 = new JButton("8");
         b9 = new JButton("9");
+        btnDian = new JButton(".");
         btnAdd = new JButton("+");
         btnEqual = new JButton("=");
         btnSubtract = new JButton("-");
         btnChen = new JButton("×");
         btnChu = new JButton("÷");
         btnAc = new JButton("AC");
-        btnPingFan = new JButton("平方");
+        btnPingFan2 = new JButton("二次方");
+        btnPingFan3 = new JButton("三次方");
         btnPingFanGen = new JButton("求平方根");
         btnSin = new JButton("Sin");
         btnCos = new JButton("Cos");
         btnTan = new JButton("Tan");
         btnLog = new JButton("常用log");
         btnLn = new JButton("Ln");
-        btnDian = new JButton(".");
                         }
     // main function
     public static void main(String[] args) {
@@ -131,7 +134,7 @@ class Calculator implements ActionListener {
         JFrame frame = new JFrame("Caculator");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(calculator.panel);
-        frame.setSize(330, 220);
+        frame.setSize(330, 300);
         frame.setLocation(700,300);
         frame.setVisible(true);
                                             }
@@ -162,8 +165,15 @@ class Calculator implements ActionListener {
             displayText += command;
             shouldAppendDigitToNumber = true;
         }
-        else if (c == '平'){
+        else if (c == '二'){
             Double result = computeResult1();
+            displayText = Double.toString(result);
+            operator = null;
+            operand1 = null;
+            shouldAppendDigitToNumber = false;
+        }
+        else if (c == '三'){
+            Double result = computeResult8();
             displayText = Double.toString(result);
             operator = null;
             operand1 = null;
@@ -255,6 +265,12 @@ class Calculator implements ActionListener {
         result = Math.pow(operand2, 2);
         return result;
                             }
+    Double computeResult8() {
+        Double operand2 = Double.parseDouble(displayText);
+        Double result;
+        result = Math.pow(operand2, 3);
+        return result;
+    }
     Double computeResult2() {
         Double operand2 = Double.parseDouble(displayText);
         Double result;
