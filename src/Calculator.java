@@ -63,10 +63,10 @@ class Calculator implements ActionListener {
         panel.add(btnPingFanGen);
         panel.add(btnPingFanGen3);
         panel.add(btnSin);
-        panel.add(btnAsin);
         panel.add(btnCos);
-        panel.add(btnAcos);
         panel.add(btnTan);
+        panel.add(btnAsin);
+        panel.add(btnAcos);
         panel.add(btnAtan);
         panel.add(btnLog);
         panel.add(btnLn);
