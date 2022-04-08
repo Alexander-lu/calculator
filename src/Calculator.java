@@ -17,7 +17,7 @@ class Calculator implements ActionListener {
     // 用来表示应该重新输入一个数字还是往屏幕后面添加数字
     boolean shouldAppendDigitToNumber;
     // 计算器上的按键
-    JButton b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b00,btnAdd,btnEqual,btnSubtract,btnchen,btnchu,btnC,btnpingfan,btnpingfangen;
+    JButton btnLog,btnLn,btnSin,btnCos,btnTan,b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b00,btnAdd,btnEqual,btnSubtract,btnChen,btnChu,btnAc,btnPingFan,btnPingFanGen;
     // 生成整个计算器模板
     Calculator(){
         panel = new JPanel();
@@ -38,7 +38,7 @@ class Calculator implements ActionListener {
      * 将屏幕和按键依次添加到计算器上
      */
     void addComponentsToPanel() {
-        panel.add(btnC);
+        panel.add(btnAc);
         panel.add(display);
         panel.add(btnEqual);
         panel.add(b0);
@@ -54,10 +54,15 @@ class Calculator implements ActionListener {
         panel.add(b9);
         panel.add(btnAdd);
         panel.add(btnSubtract);
-        panel.add(btnchen);
-        panel.add(btnchu);
-        panel.add(btnpingfan);
-        panel.add(btnpingfangen);
+        panel.add(btnChen);
+        panel.add(btnChu);
+        panel.add(btnPingFan);
+        panel.add(btnPingFanGen);
+        panel.add(btnSin);
+        panel.add(btnCos);
+        panel.add(btnTan);
+        panel.add(btnLog);
+        panel.add(btnLn);
                                 }
     /**
      * 设置用户点击按键时计算器的反应
@@ -77,11 +82,16 @@ class Calculator implements ActionListener {
         b9.addActionListener(this);
         btnEqual.addActionListener(this);
         btnSubtract.addActionListener(this);
-        btnchen.addActionListener(this);
-        btnchu.addActionListener(this);
-        btnC.addActionListener(this);
-        btnpingfan.addActionListener(this);
-        btnpingfangen.addActionListener(this);
+        btnChen.addActionListener(this);
+        btnChu.addActionListener(this);
+        btnAc.addActionListener(this);
+        btnPingFan.addActionListener(this);
+        btnPingFanGen.addActionListener(this);
+        btnSin.addActionListener(this);
+        btnCos.addActionListener(this);
+        btnTan.addActionListener(this);
+        btnLog.addActionListener(this);
+        btnLn.addActionListener(this);
                             }
     /**
      * 创建好按键（但还没有"贴"到屏幕上）
@@ -101,11 +111,16 @@ class Calculator implements ActionListener {
         btnAdd = new JButton("+");
         btnEqual = new JButton("=");
         btnSubtract = new JButton("-");
-        btnchen = new JButton("×");
-        btnchu = new JButton("÷");
-        btnC = new JButton("C");
-        btnpingfan = new JButton("平方");
-        btnpingfangen = new JButton("求平方根");
+        btnChen = new JButton("×");
+        btnChu = new JButton("÷");
+        btnAc = new JButton("AC");
+        btnPingFan = new JButton("平方");
+        btnPingFanGen = new JButton("求平方根");
+        btnSin = new JButton("Sin");
+        btnCos = new JButton("Cos");
+        btnTan = new JButton("Tan");
+        btnLog = new JButton("常用log");
+        btnLn = new JButton("Ln");
                         }
     // main function
     public static void main(String[] args) {
@@ -134,7 +149,7 @@ class Calculator implements ActionListener {
             operator = null;
             operand1 = null;
             shouldAppendDigitToNumber = false;
-        } else if (c == 'C'){
+        } else if (c == 'A'){
             displayText = "0";
             operator=null;
             operand1 = null;
@@ -142,6 +157,41 @@ class Calculator implements ActionListener {
         }
         else if (c == '平'){
             Double result = computeResult1();
+            displayText = Double.toString(result);
+            operator = null;
+            operand1 = null;
+            shouldAppendDigitToNumber = false;
+        }
+        else if (c == 'S'){
+            Double result = computeResult3();
+            displayText = Double.toString(result);
+            operator = null;
+            operand1 = null;
+            shouldAppendDigitToNumber = false;
+        }
+        else if (c == 'C'){
+            Double result = computeResult4();
+            displayText = Double.toString(result);
+            operator = null;
+            operand1 = null;
+            shouldAppendDigitToNumber = false;
+        }
+        else if (c == 'T'){
+            Double result = computeResult5();
+            displayText = Double.toString(result);
+            operator = null;
+            operand1 = null;
+            shouldAppendDigitToNumber = false;
+        }
+        else if (c == '常'){
+            Double result = computeResult6();
+            displayText = Double.toString(result);
+            operator = null;
+            operand1 = null;
+            shouldAppendDigitToNumber = false;
+        }
+        else if (c == 'L'){
+            Double result = computeResult7();
             displayText = Double.toString(result);
             operator = null;
             operand1 = null;
@@ -175,16 +225,21 @@ class Calculator implements ActionListener {
      */
     Double computeResult() {
         Double operand2 = Double.parseDouble(displayText);
-        Double result;
-        if (operator.equals("+")) {
-            result = addNumbers(operand1, operand2);
-        } else if (operator.equals("-")){
-            result = SubtractNumbers(operand1, operand2);
-        } else if (operator.equals("×")){
-            result = chenNumbers(operand1, operand2);
-        } else {
-            result = chuNumbers(operand1, operand2);
-        }
+        Double result=0.0;
+        switch (operator) {
+            case "+":
+                result = addNumbers(operand1, operand2);
+                break;
+            case "-":
+                result = SubtractNumbers(operand1, operand2);
+                break;
+            case "×":
+                result = chenNumbers(operand1, operand2);
+                break;
+            case "÷":
+                result = chuNumbers(operand1, operand2);
+                break;
+                            }
         return result;
                             }
     Double computeResult1() {
@@ -199,6 +254,36 @@ class Calculator implements ActionListener {
         result = Math.sqrt(operand2);
         return result;
                              }
+    Double computeResult3() {
+        Double operand2 = Double.parseDouble(displayText);
+        Double result;
+        result = Math.sin(operand2);
+        return result;
+    }
+    Double computeResult4() {
+        Double operand2 = Double.parseDouble(displayText);
+        Double result;
+        result = Math.cos(operand2);
+        return result;
+    }
+    Double computeResult5() {
+        Double operand2 = Double.parseDouble(displayText);
+        Double result;
+        result = Math.tan(operand2);
+        return result;
+    }
+    Double computeResult6() {
+        Double operand2 = Double.parseDouble(displayText);
+        Double result;
+        result = Math.log10(operand2);
+        return result;
+    }
+    Double computeResult7() {
+        Double operand2 = Double.parseDouble(displayText);
+        Double result;
+        result = Math.log(operand2);
+        return result;
+    }
     Double addNumbers(Double a, Double b) {
         return a + b;
                                           }
