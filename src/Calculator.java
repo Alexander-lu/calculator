@@ -26,6 +26,7 @@ class Calculator implements ActionListener {
         panel = new JPanel();
     //  设置背景颜色
         panel.setBackground(Color.BLUE);
+
     //  初始化operator，为后面判断连续运算提供条件
         operator = null;
         displayText = "0";
@@ -41,21 +42,21 @@ class Calculator implements ActionListener {
      * 将屏幕和按键依次添加到计算器上
      */
     void addComponentsToPanel() {
-        panel.add(btnAc);
-        panel.add(display);
         panel.add(btnEqual);
+        panel.add(display);
+        panel.add(btnAc);
         panel.add(b0);
         panel.add(b1);
         panel.add(b2);
         panel.add(b3);
         panel.add(b4);
         panel.add(b5);
-        panel.add(btnDian);
-        panel.add(b00);
         panel.add(b6);
         panel.add(b7);
         panel.add(b8);
         panel.add(b9);
+        panel.add(btnDian);
+        panel.add(b00);
         panel.add(btnFushu);
         panel.add(btnAdd);
         panel.add(btnSubtract);
@@ -145,6 +146,38 @@ class Calculator implements ActionListener {
         btnLog = new JButton("常用log");
         btnLn = new JButton("Ln");
         btnFushu = new JButton("负数");
+        Font f = new Font("仿宋", Font.BOLD, 20);// 根据指定字体名称、样式和磅值大小，创建一个新 Font
+        b0.setFont(f);
+        b00.setFont(f);
+        b1.setFont(f);
+        b2.setFont(f);
+        b3.setFont(f);
+        b4.setFont(f);
+        b5.setFont(f);
+        b6.setFont(f);
+        b7.setFont(f);
+        b8.setFont(f);
+        b9.setFont(f);
+        btnDian.setFont(f);
+        btnAdd.setFont(f);
+        btnEqual.setFont(f);
+        btnSubtract.setFont(f);
+        btnChen.setFont(f);
+        btnChu.setFont(f);
+        btnAc.setFont(f);
+        btnPingFanGen.setFont(f);
+        btnPingFan2.setFont(f);
+        btnPingFan3.setFont(f);
+        btnPingFanGen3.setFont(f);
+        btnSin.setFont(f);
+        btnAsin.setFont(f);
+        btnAcos.setFont(f);
+        btnAtan.setFont(f);
+        btnCos.setFont(f);
+        btnTan.setFont(f);
+        btnLog.setFont(f);
+        btnLn.setFont(f);
+        btnFushu.setFont(f);
                         }
     // main function
     public static void main(String[] args) {
@@ -152,7 +185,7 @@ class Calculator implements ActionListener {
         JFrame frame = new JFrame("Caculator");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(calculator.panel);
-        frame.setSize(330, 300);
+        frame.setSize(330, 600);
         frame.setLocation(700,300);
         frame.setVisible(true);
                                             }
