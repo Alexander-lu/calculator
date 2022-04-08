@@ -313,80 +313,80 @@ class Calculator implements ActionListener {
         return result;
                             }
     Double computeResult1() {
-        Double operand2 = Double.parseDouble(displayText);
-        Double result;
+        double operand2 = Double.parseDouble(displayText);
+        double result;
         result = Math.pow(operand2, 2);
         return result;
                             }
     Double computeResult8() {
-        Double operand2 = Double.parseDouble(displayText);
-        Double result;
+        double operand2 = Double.parseDouble(displayText);
+        double result;
         result = Math.pow(operand2, 3);
         return result;
     }
     Double computeResult2() {
-        Double operand2 = Double.parseDouble(displayText);
-        Double result;
+        double operand2 = Double.parseDouble(displayText);
+        double result;
         result = Math.sqrt(operand2);
         return result;
                              }
     Double computeResult3() {
-        Double operand2 = Double.parseDouble(displayText);
-        Double result;
+        double operand2 = Double.parseDouble(displayText);
+        double result;
         result = Math.sin(operand2*Math.PI/180);
         return result;
     }
     Double computeResult4() {
-        Double operand2 = Double.parseDouble(displayText);
-        Double result;
+        double operand2 = Double.parseDouble(displayText);
+        double result;
         result = Math.cos(operand2*Math.PI/180);
         return result;
     }
     Double computeResult5() {
-        Double operand2 = Double.parseDouble(displayText);
-        Double result;
+        double operand2 = Double.parseDouble(displayText);
+        double result;
         result = Math.tan(operand2*Math.PI/180);
         return result;
     }
     Double computeResult6() {
-        Double operand2 = Double.parseDouble(displayText);
-        Double result;
+        double operand2 = Double.parseDouble(displayText);
+        double result;
         result = Math.log10(operand2);
         return result;
     }
     Double computeResult7() {
-        Double operand2 = Double.parseDouble(displayText);
-        Double result;
+        double operand2 = Double.parseDouble(displayText);
+        double result;
         result = Math.log(operand2);
         return result;
     }
     Double computeResult9() {
-        Double operand2 = Double.parseDouble(displayText);
-        Double result;
+        double operand2 = Double.parseDouble(displayText);
+        double result;
         result = Math.asin(operand2);
         return result;
     }
     Double computeResult10() {
-        Double operand2 = Double.parseDouble(displayText);
-        Double result;
+        double operand2 = Double.parseDouble(displayText);
+        double result;
         result = Math.acos(operand2);
         return result;
     }
     Double computeResult11() {
-        Double operand2 = Double.parseDouble(displayText);
-        Double result;
+        double operand2 = Double.parseDouble(displayText);
+        double result;
         result = Math.atan(operand2);
         return result;
     }
     Double computeResult12() {
-        Double operand2 = Double.parseDouble(displayText);
-        Double result;
+        double operand2 = Double.parseDouble(displayText);
+        double result;
         result = operand2-2*operand2;
         return result;
     }
     Double computeResult13() {
-        Double operand2 = Double.parseDouble(displayText);
-        Double result;
+        double operand2 = Double.parseDouble(displayText);
+        double result;
         result = Math.cbrt(operand2);
         return result;
     }
