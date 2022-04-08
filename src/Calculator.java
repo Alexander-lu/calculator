@@ -17,7 +17,7 @@ class Calculator implements ActionListener {
     // 用来表示应该重新输入一个数字还是往屏幕后面添加数字
     boolean shouldAppendDigitToNumber;
     // 计算器上的按键
-    JButton btnLog,btnLn,btnSin,btnCos,btnTan,b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b00,btnAdd,btnEqual,btnSubtract,btnChen,btnChu,btnAc,btnPingFan,btnPingFanGen;
+    JButton btnDian,btnLog,btnLn,btnSin,btnCos,btnTan,b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b00,btnAdd,btnEqual,btnSubtract,btnChen,btnChu,btnAc,btnPingFan,btnPingFanGen;
     // 生成整个计算器模板
     Calculator(){
         panel = new JPanel();
@@ -63,6 +63,7 @@ class Calculator implements ActionListener {
         panel.add(btnTan);
         panel.add(btnLog);
         panel.add(btnLn);
+        panel.add(btnDian);
                                 }
     /**
      * 设置用户点击按键时计算器的反应
@@ -92,6 +93,7 @@ class Calculator implements ActionListener {
         btnTan.addActionListener(this);
         btnLog.addActionListener(this);
         btnLn.addActionListener(this);
+        btnDian.addActionListener(this);
                             }
     /**
      * 创建好按键（但还没有"贴"到屏幕上）
@@ -121,6 +123,7 @@ class Calculator implements ActionListener {
         btnTan = new JButton("Tan");
         btnLog = new JButton("常用log");
         btnLn = new JButton("Ln");
+        btnDian = new JButton(".");
                         }
     // main function
     public static void main(String[] args) {
@@ -154,6 +157,10 @@ class Calculator implements ActionListener {
             operator=null;
             operand1 = null;
             shouldAppendDigitToNumber = false;
+        }
+        else if (c == '.'){
+            displayText += command;
+            shouldAppendDigitToNumber = true;
         }
         else if (c == '平'){
             Double result = computeResult1();
