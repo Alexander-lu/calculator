@@ -17,7 +17,7 @@ class Calculator implements ActionListener {
     // 用来表示应该重新输入一个数字还是往屏幕后面添加数字
     boolean shouldAppendDigitToNumber;
     // 计算器上的按键
-    JButton btnFushu,btnPingFan3,btnDian,btnLog,btnLn,btnSin,btnAsin,btnAcos,btnAtan,btnCos,btnTan,b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b00,btnAdd,btnEqual,btnSubtract,btnChen,btnChu,btnAc,btnPingFan2,btnPingFanGen;
+    JButton btnPingFanGen3,btnFushu,btnPingFan3,btnDian,btnLog,btnLn,btnSin,btnAsin,btnAcos,btnAtan,btnCos,btnTan,b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b00,btnAdd,btnEqual,btnSubtract,btnChen,btnChu,btnAc,btnPingFan2,btnPingFanGen;
     // 生成整个计算器模板
     Calculator(){
         panel = new JPanel();
@@ -61,6 +61,7 @@ class Calculator implements ActionListener {
         panel.add(btnPingFan2);
         panel.add(btnPingFan3);
         panel.add(btnPingFanGen);
+        panel.add(btnPingFanGen3);
         panel.add(btnSin);
         panel.add(btnAsin);
         panel.add(btnCos);
@@ -95,6 +96,7 @@ class Calculator implements ActionListener {
         btnPingFan2.addActionListener(this);
         btnPingFan3.addActionListener(this);
         btnPingFanGen.addActionListener(this);
+        btnPingFanGen3.addActionListener(this);
         btnSin.addActionListener(this);
         btnCos.addActionListener(this);
         btnTan.addActionListener(this);
@@ -131,6 +133,7 @@ class Calculator implements ActionListener {
         btnPingFan2 = new JButton("二次方");
         btnPingFan3 = new JButton("三次方");
         btnPingFanGen = new JButton("平方根");
+        btnPingFanGen3 = new JButton("立方根");
         btnSin = new JButton("Sin");
         btnAsin = new JButton("算ASin");
         btnAcos= new JButton("求Acos");
@@ -262,6 +265,13 @@ class Calculator implements ActionListener {
             operand1 = null;
             shouldAppendDigitToNumber = false;
         }
+        else if (c == '立'){
+            Double result = computeResult13();
+            displayText = Double.toString(result);
+            operator = null;
+            operand1 = null;
+            shouldAppendDigitToNumber = false;
+        }
 //        判断是否连续运算
         else if (operator != null){
             displayText = Double.toString(computeResult());
@@ -321,19 +331,19 @@ class Calculator implements ActionListener {
     Double computeResult3() {
         Double operand2 = Double.parseDouble(displayText);
         Double result;
-        result = Math.sin(operand2);
+        result = Math.sin(operand2*Math.PI/180);
         return result;
     }
     Double computeResult4() {
         Double operand2 = Double.parseDouble(displayText);
         Double result;
-        result = Math.cos(operand2);
+        result = Math.cos(operand2*Math.PI/180);
         return result;
     }
     Double computeResult5() {
         Double operand2 = Double.parseDouble(displayText);
         Double result;
-        result = Math.tan(operand2);
+        result = Math.tan(operand2*Math.PI/180);
         return result;
     }
     Double computeResult6() {
@@ -370,6 +380,12 @@ class Calculator implements ActionListener {
         Double operand2 = Double.parseDouble(displayText);
         Double result;
         result = operand2-2*operand2;
+        return result;
+    }
+    Double computeResult13() {
+        Double operand2 = Double.parseDouble(displayText);
+        Double result;
+        result = Math.cbrt(operand2);
         return result;
     }
     Double addNumbers(Double a, Double b) {
