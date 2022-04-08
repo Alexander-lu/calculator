@@ -17,8 +17,11 @@ class Calculator implements ActionListener {
     // 用来表示应该重新输入一个数字还是往屏幕后面添加数字
     boolean shouldAppendDigitToNumber;
     // 计算器上的按键
-    JButton btnPingFanGen3,btnFushu,btnPingFan3,btnDian,btnLog,btnLn,btnSin,btnAsin,btnAcos,btnAtan,btnCos,btnTan,b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b00,btnAdd,btnEqual,btnSubtract,btnChen,btnChu,btnAc,btnPingFan2,btnPingFanGen;
-    // 生成整个计算器模板
+    JButton btnFushu,btnDian,btnLog,btnLn,btnAdd,btnSubtract,btnChen,btnChu,btnAc,btnEqual;
+    JButton btnSin,btnAsin,btnAcos,btnAtan,btnCos,btnTan;
+    JButton b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b00;
+    JButton btnPingFan3,btnPingFan2,btnPingFanGen,btnPingFanGen3;
+        // 生成整个计算器模板
     Calculator(){
         panel = new JPanel();
     //  设置背景颜色
@@ -70,7 +73,6 @@ class Calculator implements ActionListener {
         panel.add(btnAtan);
         panel.add(btnLog);
         panel.add(btnLn);
-
                                 }
     /**
      * 设置用户点击按键时计算器的反应
